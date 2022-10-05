@@ -45,11 +45,14 @@
     </div>
     <div class="form-group row mt-2" *ngIf="hasLocations">
         <div class="mb-3">
-            <select class="form-select" aria-label="Default select example" id="address" name="address" formControlName="address">
+            <select class="form-select" aria-label="Default select example" id="address" name="address" formControlName="address" (change)="showLocationInMap($event);">
                 <option selected>Select Address</option>
                 <option *ngFor="let location of locations" [value]="location.label">{{ location.label }}</option>
             </select>
         </div>
+    </div>
+    <div class="form-group row mt-2" *ngIf="isAddressSelected">
+        <app-map-event [locationSelected]="locationSelected"></app-map-event>
     </div>
     <div class="form-group row">
         <div class="mb-3">

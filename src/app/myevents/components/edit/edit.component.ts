@@ -18,6 +18,8 @@ export class EditComponent implements OnInit {
 
   locations:Location[] = [];
   hasLocations:boolean = false;
+  isAddressSelected:boolean = false;
+  locationSelected!:Location;
   editEventForm!:FormGroup;
   event:Event = {
     title: '',
@@ -88,19 +90,26 @@ export class EditComponent implements OnInit {
       }
     );
   }
+
+  showLocationInMap(event:any) {
+    this.locationSelected = this.getLocation(event.target.value) as Location;
+    this.isAddressSelected = true;
+  }
+
+  getLocation(label:string) {
+    return this.locations.find(location => location.label === label);
+  }
  
   onSubmit() {
     if (this.editEventForm.invalid) return;
     
     const label = this.editEventForm.get('address')?.value;
-    const location = this.locations.find(location => location.label === label);
-
     this.event.title = this.editEventForm.get('title')?.value;
     this.event.date = this.editEventForm.get('date')?.value;
     this.event.time = this.editEventForm.get('time')?.value;
     this.event.price = this.editEventForm.get('price')?.value;
     this.event.description = this.editEventForm.get('description')?.value;
-    this.event.location = location as Location;
+    this.event.location = this.getLocation(label) as Location;
 
     this.eventsService.create(this.event)
       .then(_result => {
