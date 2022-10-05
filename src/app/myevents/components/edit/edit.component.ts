@@ -17,6 +17,7 @@ export class EditComponent implements OnInit {
   // Unsuscribe on destroy
 
   locations:Location[] = [];
+  isLoadingLocations:boolean = false;
   hasLocations:boolean = false;
   isAddressSelected:boolean = false;
   locationSelected!:Location;
@@ -79,9 +80,11 @@ export class EditComponent implements OnInit {
   }
 
   getCoordsByAddres() {
+    this.isLoadingLocations = true;
     const address = this.editEventForm.get('location')?.value;
     this.geopositionService.getCoorsByAddress(address).subscribe(
       (response:any) => {
+        this.isLoadingLocations = false;
         this.hasLocations = true;
         this.locations = response['data'];
       },
