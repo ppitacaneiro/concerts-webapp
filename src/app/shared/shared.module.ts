@@ -4,9 +4,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardEventComponent } from './components/card-event/card-event.component';
 import { MapEventComponent } from './components/map-event/map-event.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
-  declarations: [NavbarComponent, CardEventComponent, MapEventComponent],
+  declarations: [NavbarComponent, CardEventComponent, MapEventComponent, SpinnerComponent],
   imports: [
     CommonModule,
     RouterModule
@@ -14,7 +15,8 @@ import { MapEventComponent } from './components/map-event/map-event.component';
   exports: [
     NavbarComponent,
     CardEventComponent,
-    MapEventComponent
+    MapEventComponent,
+    SpinnerComponent
   ]
 })
 export class SharedModule { }
