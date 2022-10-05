@@ -1,3 +1,5 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -15,7 +17,10 @@ import { ListComponent } from './components/list/list.component';
   ],
   imports: [
     CommonModule,
-    MyeventsRoutingModule
+    MyeventsRoutingModule,
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class MyeventsModule { }
