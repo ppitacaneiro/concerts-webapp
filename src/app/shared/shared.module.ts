@@ -3,16 +3,18 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardEventComponent } from './components/card-event/card-event.component';
+import { MapEventComponent } from './components/map-event/map-event.component';
 
 @NgModule({
-  declarations: [NavbarComponent, CardEventComponent],
+  declarations: [NavbarComponent, CardEventComponent, MapEventComponent],
   imports: [
     CommonModule,
     RouterModule
   ],
   exports: [
     NavbarComponent,
-    CardEventComponent
+    CardEventComponent,
+    MapEventComponent
   ]
 })
 export class SharedModule { }
